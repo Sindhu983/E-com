@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./Wishlist.css"
 import {images_arr} from '../../Components/images/index'
 import {Navbar} from '../index'

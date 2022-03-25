@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import {Navbar} from "../index";
 
 function Home() {
@@ -9,7 +10,7 @@ function Home() {
         <img className="main-img" src="https://raw.githubusercontent.com/Sindhu983/e-commerce/dev/girl-image.jpg" alt="girl image"/>
         <p className="content">The kids dress a lot better here</p>
             <button className="shop-btn">
-                <a className="shop-now" href="#">Explore Now</a>
+                <Link to="/Product" className="shop-now">Explore Now</Link>
             </button>
         <div className="card_contianer">
             <div className="features">

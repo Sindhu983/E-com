@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Navbar } from '../index';
 import './Filter.css'
 
@@ -11,7 +12,7 @@ function Filter() {
             <div className="sidebar">
                 <div className="filter-clear">
                     <h3 className="filter-text">Filter</h3>
-                    <button className="">Clear</button>
+                    <button className="clear_btn">Clear</button>
                 </div>
                 <div className="price-filter">
                     <h2 className="price">Price</h2>
@@ -29,7 +30,7 @@ function Filter() {
                     <br />
                     <input type="checkbox" className="category-checkbox" value="Flock" />
                     <label className="category-label">  Frocks</label>
-                    <br></br>
+                    <br/>
                     <input type="checkbox" className="category-checkbox" value="Jacket" />
                     <label className="category-label">  Jackets</label>
                </div>

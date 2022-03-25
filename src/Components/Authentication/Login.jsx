@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar } from '..'
 import "./Login.css"
+import {Link} from "react-router-dom"
 
 function Login() {
   return (
@@ -23,7 +24,7 @@ function Login() {
                                 <input type="checkbox" id="logCheck" />
                                 <label htmlFor="logCheck" className="text">Remember me</label>
                             </div>
-                            <a href="#" className="text">Forgot password?</a>
+                            <Link to="/password" className="text">Forgot password?</Link>
                         </div>
                         <div className="input-field button">
                             <input type="button" value="Login Now" />
@@ -31,7 +32,7 @@ function Login() {
                     </form>
                     <div className="login-signup">
                         <span className="text">Not a member?
-                            <a href="#" className="text signup-link">Signup now</a>
+                            <Link to="/signup" className="text signup-link">Signup now</Link>
                         </span>
                     </div>
                 </div>
@@ -56,7 +57,7 @@ function Login() {
                                 <input type="checkbox" id="sigCheck" />
                                 <label htmlFor="sigCheck" className="text">Remember me</label>
                             </div>
-                            <a href="#" className="text">Forgot password?</a>
+                            <Link to="/password" className="text">Forgot password?</Link>
                         </div>
                         <div className="input-field button">
                             <input type="button" value="Login Now" />
@@ -64,7 +65,7 @@ function Login() {
                     </form>
                     <div className="login-signup">
                         <span className="text">have a member
-                            <a href="#" className="text login-link">Login now</a>
+                            <Link to="/login-page" className="text login-link">Login now</Link>
                         </span>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Navbar } from "../index";
+import { Link } from "react-router-dom";
 import "./Product.css"
 import {Filter} from "../index"
 
@@ -22,9 +23,9 @@ function Product() {
   return (
     <>
     <Navbar/>
-    <div class="Filter-container">
+    <div className="Filter-container">
     <Filter />
-      <div class="my-wishlist-container-product">
+      <div className="my-wishlist-container-product">
         {product.map(({ image, categoryName, price }, index) => (
           <div className="my-wishlist" key={index}>
             <div className="wishlist">
