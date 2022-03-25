@@ -1,8 +1,12 @@
 import React from 'react'
+import { Navbar } from '../index';
 import './Filter.css'
 
 function Filter() {
     return (
+        <>
+        <Navbar/>
+
         <div className="filter-main-container">
             <div className="sidebar">
                 <div className="filter-clear">
@@ -55,6 +59,7 @@ function Filter() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
-export default Filter;
+export {Filter};

@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import Navbar from "../Components/Navbar/Navbar-comp";
+import { Navbar } from "../index";
 import "./Product.css"
-import Filter from "../Filter/Filter";
+import {Filter} from "../index"
 
 
 import { useState, useEffect } from "react";
@@ -12,7 +12,6 @@ function Product() {
 
   async function getData() {
     const result = await axios.get("/api/products");
-    console.log(result);
     setProduct(result.data.products);
   }
 
@@ -22,7 +21,7 @@ function Product() {
 
   return (
     <>
-    <Navbar />
+    <Navbar/>
     <div class="Filter-container">
     <Filter />
       <div class="my-wishlist-container-product">
@@ -42,4 +41,4 @@ function Product() {
     </>
   );
 }
-export default Product;
+export {Product};

@@ -1,17 +1,16 @@
-
 import React from 'react'
-import Navbar from '../Navbar/Navbar-comp';
+import { Navbar } from '../index';
 import "./Cart.css"
 
 function Cart() {
   return (
       <>
-      <Navbar />
+      <Navbar/>
     <div className="cart_container">
       <div className="cart">
           <div className="products">
               <div className="product_1">
-                  <img src="https://www.mangaldeep.co.in/image/cache/data/multi-color-sleeveless-ruffle-kids-dress-32163-297x408.jpg" alt=""/>
+                  <img src="https://www.mangaldeep.co.in/image/cache/data/multi-color-sleeveless-ruffle-kids-dress-32163-297x408.jpg" alt="girl image"/>
 
                   <div className="details">
                       <h3 className="jean-name">Party Frock</h3>
@@ -57,4 +56,4 @@ function Cart() {
   )
 }
 
-export default Cart;
+export {Cart};

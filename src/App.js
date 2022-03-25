@@ -1,25 +1,17 @@
-
-import Navbar from "./Components/Navbar/Navbar-comp";
-import Wishlist from "./Components/Wishlist/Wishlist";
-import Product from "./Product/Product";
-import Authentication from "./Components/Authentication/Login"
-import Cart from "./Components/Cart/Cart";
-// import Filter from "./Filter/Filter";
-import Home from "./Screen/Home";
-
-
-
+import {Cart, Wishlist, Home, Login, Filter, Product, Navbar} from "./Components/index"
 
 function App() {
   return (
-  
     <div className="App">
-    {/* <Navbar/> */}
-    {/* <Cart /> */}
-    {/* <Home/> */}
-    {/* <Product /> */}
+    {/* <Cart/> */}
     {/* <Wishlist /> */}
-    <Authentication />
+    {/* <Home /> */}
+    {/* <Navbar /> */}
+    {/* <Filter /> */}
+    {/* <Product /> */}
+    <Login />
+    
+
     </div>
   );
 }

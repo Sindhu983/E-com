@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../Components/Navbar/Navbar-comp';
+import {Navbar} from "../index";
 
 function Home() {
   return (
@@ -33,4 +33,4 @@ function Home() {
     </>
   )
 }
-export default Home;
+export {Home};

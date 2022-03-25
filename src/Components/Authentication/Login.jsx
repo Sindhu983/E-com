@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar-comp'
+import { Navbar } from '..'
 import "./Login.css"
 
 function Login() {
   return (
       <>
-      <Navbar />
+      <Navbar/>
       <div className="container">
             <div className="forms">
                 <div className="form login">
@@ -74,4 +74,4 @@ function Login() {
   )
 }
 
-export default Login
+export {Login};

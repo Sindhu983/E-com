@@ -1,15 +1,13 @@
 import React from 'react'
-// import Navbar from '../Navbar/Navbar-comp'
 import "./Wishlist.css"
-
 import {images_arr} from '../../Components/images/index'
-import Navbar from '../Navbar/Navbar-comp'
+import {Navbar} from '../index'
 
 
 function Wishlist() {
   return (
     <>
-    <Navbar />
+    <Navbar/>
     <div className="my-wishlist-container">
         <div className="my-wishlist"></div>
         <div className="wishlist">
@@ -38,4 +36,4 @@ function Wishlist() {
   )
 }
 
-export default Wishlist
+export {Wishlist};
