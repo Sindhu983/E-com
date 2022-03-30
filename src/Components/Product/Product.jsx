@@ -9,6 +9,7 @@ import {Filter} from "../index"
 import { useState, useEffect } from "react";
 
 function Product() {
+  
   const [product, setProduct] = useState([]);
 
   async function getData() {

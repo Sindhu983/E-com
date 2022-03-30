@@ -17,7 +17,8 @@ function Login() {
                         </div>
                         <div className="input-field">
                             <input type="password" className="password" placeholder="Enter your password" required />
-                            <i className="uil uil-eye-slash showHidePw"></i>
+                            {/* <i className="uil uil-eye-slash showHidePw"></i>
+                             */}
                         </div>
                         <div className="checkbox-text">
                             <div className="checkbox-content">
