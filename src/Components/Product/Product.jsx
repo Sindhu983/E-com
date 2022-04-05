@@ -1,33 +1,41 @@
 import React from "react";
-import axios from "axios";
 import { Navbar } from "../index";
 import { Link } from "react-router-dom";
 import "./Product.css"
 import {Filter} from "../index"
+import { useProduct } from "../../Context/ProductContext/productContext"
+import {useFilter} from "../../Context/FilterContext/Filter-Context"
+import  { Utility } from "../../Context/Utility/category-filter"
+// import { products } from "../../backend/db/products";
 
 
-import { useState, useEffect } from "react";
+function sort(product, sortBy){
+  if (sortBy==="HIGH_TO_LOW"){
+    return [...product].sort((a,b)=>Number(b.price)-Number(a.price))
+    
+  }else if(sortBy==="LOW_TO_HIGH"){
+    return [...product].sort((a,b)=>Number(a.price)-Number(b.price))
+    
+  }else{
+    return product
+  }
+  
+}
 
 function Product() {
-  
-  const [product, setProduct] = useState([]);
 
-  async function getData() {
-    const result = await axios.get("/api/products");
-    setProduct(result.data.products);
-  }
+const { product } = useProduct()
+const {state} = useFilter()
 
-  useEffect(() => {
-    getData();
-  }, []);
-
+const sortedData = sort(product, state.sortByPrice )
   return (
     <>
     <Navbar/>
     <div className="Filter-container">
     <Filter />
       <div className="my-wishlist-container-product">
-        {product.map(({ image, categoryName, price }, index) => (
+        {sortedData.map(({ image, categoryName, price }, index) => (
+
           <div className="my-wishlist" key={index}>
             <div className="wishlist">
               <img className="card1-image" src={image} alt="boy" />

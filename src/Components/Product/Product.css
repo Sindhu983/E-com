@@ -1,9 +1,7 @@
 .my-wishlist-container-product {
-    /* margin-top:1rem; */
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-
 }
 
 .card1-image {

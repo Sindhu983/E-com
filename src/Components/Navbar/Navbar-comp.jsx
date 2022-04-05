@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <>
         <nav className="navigation-bar">
-                <Link to="/Home" className="title">Nefty</Link>
+                <Link to="/" className="title">Nefty</Link>
                 <input className="search-bar" type="text" placeholder="search for products" />
                 <ul className="side-nav-section">
                     <li>
