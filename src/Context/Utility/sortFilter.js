@@ -1,4 +1,4 @@
-function sort(data, {sortByPrice}){
+function sorted(data, {sortByPrice}){
     if (sortByPrice==="HIGH_TO_LOW"){
       return [...data.sort((a,b)=>Number(b.price)-Number(a.price))]
       
@@ -10,4 +10,4 @@ function sort(data, {sortByPrice}){
     }
     
   }
-export {sort}  
+export {sorted}  

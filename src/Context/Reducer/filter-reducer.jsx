@@ -9,9 +9,10 @@ function filterReducer(state, action) {
             return { ...state, filterByPrice: action.payload };
         case 'FILTER_CATEGORY':
             return {...state, filterByCategories:action.payload}
+            // return {...state, filterByCategories:[...state.filterByCategories, action.payload]}
+    
         case 'FILTER_RATING':{
-            console.log(action.value,"im filter-rating");
-            return {...state,filterByRating:parseInt(action.value)}
+            return {...state,filterByRating:action.payload}
         }
         case 'CLEAR':
             return {

@@ -1,60 +1,98 @@
-import React from 'react'
-import {Link} from "react-router-dom"
-import { Navbar } from '../index';
-import "./Cart.css"
+import React from "react";
+import { Link } from "react-router-dom";
+import { Navbar } from "../index";
+import "./Cart.css";
+import { useCart } from "../../Context/CartContext/cartContext";
+import { useWishlist } from "../../Context/WishlistContext/wishContext";
+import { useProduct } from "../../Context/ProductContext/productContext";
 
 function Cart() {
-  return (
-      <>
-      <Navbar/>
-    <div className="cart_container">
-      <div className="cart">
-          <div className="products">
-              <div className="product_1">
-                  <img src="https://www.mangaldeep.co.in/image/cache/data/multi-color-sleeveless-ruffle-kids-dress-32163-297x408.jpg" alt="girl image"/>
+  const { product } = useProduct();
+  const {
+    cartData,
+    removeFromCart,
+    reducedData,
+    getQuantity,
+    decrementQuantity,
+  } = useCart();
+  const { totalDiscoutPrice, totalOriginalPrice } = reducedData;
+  const { addToWishlist } = useWishlist();
 
-                  <div className="details">
-                      <h3 className="jean-name">Party Frock</h3>
-                      <h4 className="jean-price">₹ 3000</h4>
-                      <h4 className="offer">50% Off</h4>
-                      <div className="increament-decrement">
-                          <p className="quantity">quantity:</p>
-                          <button className="quan-btn">-</button>
-                          <p className="num-btn">1</p>
-                          <button className="quan-btn">+</button>
-                      </div>
-                      <div className="button">
-                          <button className="add-btn">Move to wishlist</button>
-                          <button className="remove-btn">Remove from Cart</button>
-                      </div>
-                  </div>
+  return (
+    <>
+      <Navbar />
+      <div className="cart-container">
+        <div className="my-cart-container-product">
+          {cartData.map((product) => (
+            <div className="my-cart" key={product._id}>
+              <div className="cart">
+                <img className="card1-image" src={product.image} alt="boy" />
+                <span className="heart-symbol">❤</span>
+                <h4 className="card-title">{product.categoryName}</h4>
+                <h4 className="price-wishlist">{product.price}</h4>
+                <h5 className="item-rating">Rating: {product.rating}</h5>
+                <div className="btn-container">
+                  <button
+                    className="decrement-btn"
+                    onClick={() =>
+                      product.qty === 1
+                        ? removeFromCart(product._id)
+                        : decrementQuantity(product._id)
+                    }
+                  >
+                    -
+                  </button>
+                  <p className="cart-count-num">{product.qty}</p>
+                  <button
+                    className="increment-btn"
+                    onClick={() => getQuantity(product._id)}
+                  >
+                    +
+                  </button>
+                </div>
+                <button
+                  onClick={() => addToWishlist(product)}
+                  className="move-to-cart"
+                >
+                  Move To wishlist
+                </button>
+                <div>
+                  <button
+                    onClick={() => removeFromCart(product)}
+                    className="remove-to-cart"
+                  >
+                    Remove from Cart
+                  </button>
+                </div>
               </div>
-          </div>
-          <div className="cart-total">
-              <h2>Price Details</h2>
-              <hr/>
-              <p>
-                <span>Total items</span>
-                <span>₹ 3,500</span>
-              </p>
-              <p>
-                <span>Discount</span>
-                <span>₹ 1000</span>
-              </p>
-              <p>
-                <span>Delivary Charges</span>
-                <span>₹ 450</span>
-              </p>
-              <hr/>
-              <p>
-                <span>Total Amount</span>
-                <span>₹ 3950</span>
-              </p>
-          </div>
+            </div>
+          ))}
+        </div>
       </div>
-  </div>
-  </>
-  )
+
+      <div className="cart-total">
+        <h2>Price Details</h2>
+        <hr />
+        <p>
+          <span>Total price</span>
+          <span>{totalOriginalPrice}</span>
+        </p>
+        <p>
+          <span>Discount</span>
+          <span>{totalOriginalPrice - totalDiscoutPrice}</span>
+        </p>
+        <p>
+          <span>Delivary Charges</span>
+          <span>Free</span>
+        </p>
+        <hr />
+        <p>
+          <span>Total Amount</span>
+          <span>{totalDiscoutPrice}</span>
+        </p>
+      </div>
+    </>
+  );
 }
 
-export {Cart};
+export { Cart };

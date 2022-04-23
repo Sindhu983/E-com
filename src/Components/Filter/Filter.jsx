@@ -8,7 +8,6 @@ import './Filter.css'
 function Filter() {
     const {filterState, filterDispatch} = useFilter()
     const {sortByPrice,filterByPrice,filterByCategories,filterByRating} = filterState
-    console.log(filterByRating,"filterdsyate");
 
     return (
         <>
@@ -42,9 +41,9 @@ function Filter() {
                 <div className="price-filter">
                     <h2 className="price">Price</h2>
                     <div className='rate'>
+                    <h3>1k</h3>
+                    <h3>2k</h3>
                     <h3>5k</h3>
-                    <h3>10k</h3>
-                    <h3>20k</h3>
                     </div>
                     <input onChange={(e)=>filterDispatch({type:"PRICE_FILTER",payload:e.target.value})} type="range" value={filterByPrice} min="100" max="10000" className="slider" />
                 </div>
@@ -60,14 +59,16 @@ function Filter() {
                     <input type="checkbox"
                     className="category-checkbox"
                     value="Frocks"
-                    id ="category_f" checked={filterByCategories.includes("frocks")}
+                    id ="category_f" 
+                    checked={filterByCategories.includes("frocks")}
                     onChange={()=>filterDispatch({type:"FILTER_CATEGORY", payload:"frocks"})}/>
                     <label className="category-label">  Frocks</label>
                     <br/>
                     <input type="checkbox"
                     className="category-checkbox"
                     value="Jacket"
-                    id ="category_j" checked={filterByCategories.includes("jackets")}
+                    id ="category_j" 
+                    checked={filterByCategories.includes("jackets")}
                     onChange={()=>filterDispatch({type:"FILTER_CATEGORY", payload:"jackets"})}/>
                     <label className="category-label">  Jackets</label>
                </div>
@@ -77,27 +78,18 @@ function Filter() {
                     className="category-choice" 
                     name="star-rating"
                     value="4"
-                     checked={filterByRating===4}
-                     onChange={(e)=>filterDispatch({type:"FILTER_RATING",value:e.target.value})}/>
+                     checked={filterByRating==="GREATER_THAN_FOUR"}
+                     onChange={(e)=>filterDispatch({type:"FILTER_RATING",payload:"GREATER_THAN_FOUR"})}/>
                     <label htmlFor="text">  4 Stars & Above</label>
                     <br />
-                    <input checked={filterByRating===3} onChange={()=>filterDispatch({type:"FILTER_RATING", payload:"GREATER_THAN_THREE"})} type="radio" className="category-choice" name="star-rating" value="rating" />
+                    <input checked={filterByRating==="GREATER_THAN_THREE"} onChange={()=>filterDispatch({type:"FILTER_RATING", payload:"GREATER_THAN_THREE"})} type="radio" className="category-choice" name="star-rating" value="rating" />
                     <label htmlFor="text">  3 Stars & Above</label>
                     <br />
-                    <input checked={filterByRating===2} onChange={()=>filterDispatch({type:"FILTER_RATING", payload:"GREATER_THAN_TWO"})} type="radio" className="category-choice" name="star-rating" value="rating" />
+                    <input checked={filterByRating==="GREATER_THAN_TWO"} onChange={()=>filterDispatch({type:"FILTER_RATING", payload:"GREATER_THAN_TWO"})} type="radio" className="category-choice" name="star-rating" value="rating" />
                     <label htmlFor="text">  2 Stars & Above</label>
                     <br />
-                    <input checked={filterRating===1} onChange={()=>filterDispatch({type:"FILTER_RATING", payload:"GREATER_THAN_ONE"})} type="radio" className="category-choice" name="star-rating" value="rating" />
+                    <input checked={filterByRating==="GREATER_THAN_ONE"} onChange={()=>filterDispatch({type:"FILTER_RATING", payload:"GREATER_THAN_ONE"})} type="radio" className="category-choice" name="star-rating" value="rating" />
                     <label htmlFor="text">  1 Star & Above</label>
-                    <br />
-                </div>
-                <h3 className="sort">Sort By</h3>
-                <div className="sort-choice">
-                    <input type="radio" className="category-checkbox" name="price-sort" value="sort" />
-                    <label htmlFor="text">  Price-Low to High</label>
-                    <br />
-                    <input type="radio" className="category-checkbox" name="price-sort" value="sort" />
-                    <label htmlFor="text">  Price-High to Low</label>
                     <br />
                 </div>
             </div>

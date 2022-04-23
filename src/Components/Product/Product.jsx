@@ -8,20 +8,20 @@ import {useFilter} from "../../Context/FilterContext/Filter-Context"
 import {categotyFilter} from "../../Context/Utility/category-filter"
 import { filterPrice } from "../../Context/Utility/filterRange";
 import { filterRating } from "../../Context/Utility/filterRating";
-import  { sort } from "../../Context/Utility/sortFilter"
-
+import  { sorted } from "../../Context/Utility/sortFilter"
+import {useCart} from "../../Context/CartContext/cartContext"
 
 
 function Product() {
 
 const { product } = useProduct()
 const {filterState} = useFilter()
-const category = categotyFilter(filterState, product)
+const {addToCart} = useCart()
+const category = categotyFilter( product, filterState)
 const priceFilterDate = filterPrice(category,filterState)
-const filterRatingData = filterRating({product,filterState})
-const sortedData = sort(priceFilterDate,filterState,filterRatingData)
-
-console.log(filterRatingData,"im from filter rating data");
+// const filterRatingData = filterRating({product,filterState})
+const filterRatingData = filterRating(priceFilterDate,filterState)
+const sortedData = sorted(filterRatingData,filterState)
 
 
   return (
@@ -30,16 +30,16 @@ console.log(filterRatingData,"im from filter rating data");
     <div className="Filter-container">
     <Filter />
       <div className="my-wishlist-container-product">
-        {sortedData.map(({ image, categoryName, price, rating }, index) => (
+        {sortedData.map((product) => (
 
-          <div className="my-wishlist" key={index}>
+          <div className="my-wishlist" key={product._id}>
             <div className="wishlist">
-              <img className="card1-image" src={image} alt="boy" />
+              <img className="card1-image" src={product.image} alt="boy" />
               <span className="heart-symbol">❤</span>
-              <h4 className="card-title">{categoryName}</h4>
-              <h4 className="price-wishlist">{price}</h4>
-              <h5 className="item-rating">Rating: {rating}</h5>
-              <button className="move-to-cart">Move to Cart</button>
+              <h4 className="card-title">{product.categoryName}</h4>
+              <h4 className="price-wishlist">{product.price}</h4>
+              <h5 className="item-rating">Rating: {product.rating}</h5>
+              <button onClick={()=>addToCart(product)} className="move-to-cart" >Move To cart</button>
             </div>
           </div>
         ))}

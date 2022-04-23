@@ -1,27 +1,22 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.my-wishlist-container {
-    margin-top:10rem ;
+.my-wishlist-container-product {
     display: flex;
-    gap: 2rem;
-    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.card1-image {
+    width: 20rem;
+    object-fit: cover;
+    height: 20rem;
 }
 
 .my-wishlist {
     text-align: center;
+    margin: 1rem;
 }
 
-h1 {
-   text-align: center;
-}
-
-.image {
-    height: 300px;
-    width: 300px;
-    object-fit: cover;
+.wishlist {
+    position: relative;
 }
 
 .image:hover {
@@ -35,9 +30,13 @@ h1 {
     background-color: white;
     border: 2px solid rgb(34, 33, 33);
     border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
     position: absolute;
-    top: 0.5rem;
-    right: 0.8rem;
+    top: 0.8rem;
+    right: 2rem;
+    cursor: pointer;
 }
 
 .card-title {
@@ -52,8 +51,16 @@ h1 {
 
 .move-to-cart {
     padding: 0.5rem 6.7rem;
-    width: 100%;
     font-weight: bold;
+    padding-bottom: 10px;
+}
+.remove-from-wishlist{
+    padding: 0.4rem 4.8rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
 
 }
 
@@ -61,10 +68,22 @@ button {
     cursor: pointer;
     background-color: silver;
     border: none;
+    padding: 10px;
 }
 
 button:hover {
     background-color: rgb(36, 50, 51);
     color: white;
 }
+
+.wishlist-container {
+    display: flex;
+    padding-top: 100px;
+    position: relative;
+    
+}
+.item-rating{
+    padding: 10px;
+}
+
 
