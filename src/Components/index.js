@@ -5,3 +5,4 @@ export { Cart } from "./Cart/Cart"
 export {Wishlist} from "./Wishlist/Wishlist";
 export {Home} from "./Screen/Home"
 export {Filter} from "./Filter/Filter"
+export {Signup} from "./Authentication/Signup"

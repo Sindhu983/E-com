@@ -1,24 +1,28 @@
 import React from "react";
 import axios from "axios";
 import { Navbar } from "../index";
-import { Link } from "react-router-dom";
 import "./Product.css"
 import {Filter} from "../index"
+import { useProduct } from "../../Context/ProductContext/productContext"
+import {useFilter} from "../../Context/FilterContext/Filter-Context"
+import {categotyFilter} from "../../Context/Utility/category-filter"
+import { filterPrice } from "../../Context/Utility/filterRange";
+import { filterRating } from "../../Context/Utility/filterRating";
+import  { sorted } from "../../Context/Utility/sortFilter"
+import {useCart} from "../../Context/CartContext/cartContext"
 
-
-import { useState, useEffect } from "react";
 
 function Product() {
-  const [product, setProduct] = useState([]);
 
-  async function getData() {
-    const result = await axios.get("/api/products");
-    setProduct(result.data.products);
-  }
+const { product } = useProduct()
+const {filterState} = useFilter()
+const {addToCart} = useCart()
+const category = categotyFilter( product, filterState)
+const priceFilterDate = filterPrice(category,filterState)
+// const filterRatingData = filterRating({product,filterState})
+const filterRatingData = filterRating(priceFilterDate,filterState)
+const sortedData = sorted(filterRatingData,filterState)
 
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <>
@@ -26,14 +30,16 @@ function Product() {
     <div className="Filter-container">
     <Filter />
       <div className="my-wishlist-container-product">
-        {product.map(({ image, categoryName, price }, index) => (
-          <div className="my-wishlist" key={index}>
+        {sortedData.map((product) => (
+
+          <div className="my-wishlist" key={product._id}>
             <div className="wishlist">
-              <img className="card1-image" src={image} alt="boy" />
+              <img className="card1-image" src={product.image} alt="boy" />
               <span className="heart-symbol">❤</span>
-              <h4 className="card-title">{categoryName}</h4>
-              <h4 className="price-wishlist">{price}</h4>
-              <button className="move-to-cart">Move to Cart</button>
+              <h4 className="card-title">{product.categoryName}</h4>
+              <h4 className="price-wishlist">{product.price}</h4>
+              <h5 className="item-rating">Rating: {product.rating}</h5>
+              <button onClick={()=>addToCart(product)} className="move-to-cart" >Move To cart</button>
             </div>
           </div>
         ))}
